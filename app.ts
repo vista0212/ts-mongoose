@@ -67,6 +67,30 @@ app.patch('/update', async (req: express.Request, res: express.Response) => {
   });
 });
 
+app.delete('/delete', async (req: express.Request, res: express.Response) => {
+  const _id: IUser['id'] = req.query._id;
+
+  const user: IUser = await User.findOne({
+    _id,
+  }).catch((err) => {
+    console.log(err);
+    throw new Error('Database Error');
+  });
+
+  if (!user) {
+    throw new Error('Not Found User');
+  }
+
+  await user.remove().catch((err) => {
+    console.log(err);
+    throw new Error('Database Error');
+  });
+
+  res.json({
+    success: true,
+  });
+});
+
 app.use((req, res, next) => {
   // err.status = 404;
   res.json({
