@@ -6,8 +6,7 @@
   "author": "k1oo",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node -r tsconfig-paths/register www.ts",
-    "migration": "./node_modules/.bin/ts-node -r tsconfig-paths/register"
+    "start": "ts-node www.ts"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
